@@ -1,0 +1,25 @@
+run = "rake db:migrate && bin/rails server -b 0.0.0.0 -p ${PORT:-3000}"
+hidden = [".bundle"]
+
+entrypoint = "main.rb"
+
+[packager]
+language = "ruby"
+
+[packager.features]
+packageSearch = true
+guessImports = true
+
+[languages.ruby]
+pattern = "**/*.rb"
+
+[languages.ruby.languageServer]
+start = ["solargraph", "stdio"]
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", "README.md"]
+
+[nix]
+
+[nix.channel]
+channel = "stable-22_05"
